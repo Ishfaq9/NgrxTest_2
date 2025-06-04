@@ -1,0 +1,12 @@
+<div>
+    <div class="row">
+        <div class="col-md-12">
+            <div class="d-flex align-items-center my-3">
+                <h3 class="text-center"> {{name$|async}} </h3>
+                <input type="number" placeholder="enter value" [(ngModel)]="value" class="form-control me-2" />
+                <button class="btn btn-primary" (click)="add()">Add counter to value</button>
+                <button class="btn btn-danger" (click)="changeName()">Remove counter from value</button>
+            </div>
+        </div>
+    </div>
+</div>
