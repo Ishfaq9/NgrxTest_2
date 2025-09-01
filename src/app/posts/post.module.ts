@@ -2,6 +2,9 @@ import { Routes } from "@angular/router";
 import { AddPostComponent } from "./add-post/add-post.component";
 import { EditPostComponent } from "./edit-post/edit-post.component";
 import { PostListComponent } from "./post-list/post-list.component";
+import { provideState } from "@ngrx/store";
+import { PostsReducer } from "./state/posts.reducer";
+import { CommonModule } from "@angular/common";
 
 export const postModule: Routes = [
     {
@@ -15,5 +18,8 @@ export const postModule: Routes = [
           component: EditPostComponent,
         },
       ],
+      providers:[
+        provideState({ name: 'posts', reducer: PostsReducer })
+      ]
     },
   ];

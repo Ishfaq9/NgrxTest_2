@@ -6,7 +6,7 @@ export function PostsReducer(state: any, action: any) {
     return _PostsReducer(state, action);
 }
 const _PostsReducer = createReducer(
-    initailState, 
+    initailState,  
     on(addPost, (state, action) => {
         let posts = { ...action.post };
         posts.id = (state.posts.length + 1);
@@ -28,12 +28,13 @@ const _PostsReducer = createReducer(
           posts: updatedPosts,
         };
     })  
-    ,on(deletePost, (state, {id}) => {
-        const updatedPosts = state.posts.filter((post) => post.id != id);
-        return {
-          ...state,
-          posts: updatedPosts,
-        };
+    ,on(deletePost, (state, action) => {
+      const updatedPosts  = state.posts.filter(post=> post.id !== action.id);
+      return{
+        ...state,
+        posts:updatedPosts,
+      };
+    
     })
-        
+    
 );

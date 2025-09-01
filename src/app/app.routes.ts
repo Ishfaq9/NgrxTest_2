@@ -23,6 +23,6 @@ export const routes: Routes = [
     ,
     {
         path: 'auth',
-        loadChildren: () => import('./auth/auth.module').then(m => m.AuthRoutes)
+        loadChildren: () => import('./auth/auth.module').then(m => m.AuthModule)
     }
 ];

@@ -8,10 +8,11 @@ import { provideStoreDevtools } from '@ngrx/store-devtools';
 import { counterReducer } from './Counter/state/counter.reducer';
 import { appReducers } from './store/app.state';
 import { provideRouterStore } from '@ngrx/router-store';
+import { provideHttpClient } from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes), provideStore(appReducers), provideEffects(),
+    providers: [provideZoneChangeDetection({ eventCoalescing: true }),
+    provideRouter(routes), provideStore(),
     provideStoreDevtools({
         maxAge: 25,
         logOnly: !isDevMode(),
@@ -21,5 +22,7 @@ export const appConfig: ApplicationConfig = {
             lock: true,
             persist: true
         }
-    }), provideRouterStore()]
+    }), provideRouterStore()
+        , provideHttpClient()
+    ]
 };

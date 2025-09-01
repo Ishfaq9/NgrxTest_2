@@ -25,7 +25,7 @@ export class PostListComponent {
 
     onDelete(id: number ) {
         if(confirm("Are you sure you want to delete this post?")) {
-        this.store.dispatch(deletePost({ id }));
+            this.store.dispatch(deletePost({id}));
         }
     }
 

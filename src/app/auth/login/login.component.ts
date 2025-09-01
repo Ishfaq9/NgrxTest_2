@@ -1,6 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
+import { Store } from '@ngrx/store';
+import { Appstate } from '../../store/app.state';
+import { LogInStart } from '../state/auth.actions';
 
 @Component({
   selector: 'app-login',
@@ -8,11 +11,11 @@ import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angula
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
-export class LoginComponent {
+export class LoginComponent implements OnInit {
 
   loginForm!: FormGroup;
 
-  constructor() {}
+  constructor(private store:Store<Appstate>) {}
 
   ngOnInit(): void {
     this.loginForm = new FormGroup({
@@ -22,5 +25,8 @@ export class LoginComponent {
   }
   onLoginSubmit() {
     console.log(this.loginForm.value);
+    const email = this.loginForm.value.email;
+    const password = this.loginForm.value.password;
+    this.store.dispatch(LogInStart({ email, password }));
   }
 }

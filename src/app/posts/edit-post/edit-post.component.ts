@@ -11,7 +11,7 @@ import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-edit-post',
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule,CommonModule],
   templateUrl: './edit-post.component.html',
   styleUrl: './edit-post.component.css'
 })
