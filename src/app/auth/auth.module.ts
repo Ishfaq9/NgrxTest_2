@@ -8,6 +8,8 @@ import { AUTH_STATE_NAME } from "./state/auth.selector";
 
 import { provideEffects, EffectsModule } from "@ngrx/effects";
 import { AuthEffects } from "./state/auth.effect";
+import { SHARED_STATE_NAME } from "../shared/components/shared.selector";
+import { SharedReducer } from "../shared/components/shared.reducer";
 
 
 export const AuthModule: Routes = [
@@ -19,7 +21,7 @@ export const AuthModule: Routes = [
           // { path: 'signUp', component:  },
         ],
         providers:[
-          provideState({ name: AUTH_STATE_NAME , reducer: AuthReducer }),
+          provideState(AUTH_STATE_NAME, AuthReducer),
           provideEffects([AuthEffects])
         ]
       },
